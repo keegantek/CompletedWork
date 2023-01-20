@@ -136,8 +136,8 @@ public class FlatParser implements Parser {
 		final String formatString = String.format("%%-%ds%%-%ds%%-%ds",
 				CUSTOMER_FIRST_NAME_LENGTH, CUSTOMER_LAST_NAME_LENGTH,
 				CUSTOMER_TERMS_LENGTH);
-		//TODO provide the values to be formatted
-		return String.format(formatString, "NYI", "NYI", "NYI");
+		// provide the values to be formatted
+		return String.format(formatString, customer.getFirstName(), customer.getLastName(), customer.getTerms());
 	}
 	
 	/**
@@ -152,9 +152,15 @@ public class FlatParser implements Parser {
 		DateTimeFormatter formatter = 
 				DateTimeFormatter.ofPattern("MMddyy");
 
-		//TODO provide the values to be formatted
-		return String.format(formatString, 
-				0, "NYI", "NYI", 0.0, "NYI", "NYI");
+		// provide the values to be formatted
+		return String.format(formatString,
+				invoice.getNumber(),
+				invoice.getCustomer().getFirstName(),
+				invoice.getCustomer().getLastName(),
+				invoice.getAmount(),
+				invoice.getInvoiceDate().format(formatter),
+				((invoice.getPaidDate().isPresent()) ? invoice.getPaidDate().get().format(formatter) : "")
+		);
 	}
 
 	@Override
@@ -169,11 +175,11 @@ public class FlatParser implements Parser {
 
 	@Override
 	public Stream<String> produceCustomers(Stream<Customer> customers) {
-		return null;
+		return customers.map(c -> formatCustomer(c));
 	}
 
 	@Override
 	public Stream<String> produceInvoices(Stream<Invoice> invoices) {
-		return null;
+		return invoices.map(i -> formatInvoice(i));
 	}
 }

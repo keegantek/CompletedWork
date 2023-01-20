@@ -1,7 +1,9 @@
 package com.amica.billing.test;
 
+import com.amica.billing.Billing;
 import com.amica.billing.Customer;
 import com.amica.billing.Invoice;
+import com.amica.billing.Reporter;
 import com.amica.billing.parse.CSVParser;
 import com.amica.billing.parse.Parser;
 
@@ -9,6 +11,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -65,18 +68,16 @@ public class TestCountrySingers {
 	
 	public static void testBilling() {
 		System.out.println("Testing the Billing object ...");
-		/*
 		final String EXPECTED_CUSTOMER = "Jerry Reed";
 		Billing billing = new Billing(CUSTOMERS_FILENAME, INVOICES_FILENAME);
 		Map<String,Customer> customers = billing.getCustomers();
-		assertEqual(customers.keySet().size(), 13, 
+		assertEqual(customers.keySet().size(), 13,
 				"There should be 13 customers, was %s.");
-		assertThat(customers.containsKey(EXPECTED_CUSTOMER), 
+		assertThat(customers.containsKey(EXPECTED_CUSTOMER),
 				"There should be a customer named \"" + EXPECTED_CUSTOMER + "\".");
-		
-		assertEqual(customers.get(EXPECTED_CUSTOMER).getTerms(), Terms.CREDIT_30, 
+
+		assertEqual(customers.get(EXPECTED_CUSTOMER).getTerms(), Customer.Terms.CREDIT_30,
 				"Jerry Reed's payment terms should be CREDIT_30, was %s.");
-		*/
 		System.out.println();
 	}
 	
@@ -84,7 +85,7 @@ public class TestCountrySingers {
 		System.out.println("Testing the Reporter object ...");
 		System.out.println();
 		
-		/*
+
 		Billing billing = new Billing(CUSTOMERS_FILENAME, INVOICES_FILENAME);
 		Reporter reporter = new Reporter
 				(billing, OUTPUT_FOLDER, LocalDate.of(2021, 12, 1));
@@ -94,11 +95,11 @@ public class TestCountrySingers {
 		reporter.reportOverdueInvoices();
 		reporter.reportCustomersAndVolume();
 
-		billing.createCustomer("Merle", "Haggard", Terms.CASH);		
+		billing.createCustomer("Merle", "Haggard", Customer.Terms.CASH);
 		billing.createInvoice("Merle Haggard", 100);
 		billing.createInvoice("John Hiatt", 999);
+
 		billing.payInvoice(107);
-		*/
 	}
 	
 	public static void main(String[] args) {

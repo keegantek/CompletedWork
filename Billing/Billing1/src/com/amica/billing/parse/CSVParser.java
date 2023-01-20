@@ -103,17 +103,27 @@ public class CSVParser implements Parser {
 	 * Helper to write a CSV representation of one customer.
 	 */
 	public String formatCustomer(Customer customer) {
-		//TODO provide the values to be formatted
-		return String.format("%s,%s,%s", "NYI", "NYI", "NYI");
+		//provide the values to be formatted
+		return String.format("%s,%s,%s", customer.getFirstName(), customer.getLastName(), customer.getTerms());
 	}
 	
 	/**
 	 * Helper to write a CSV representation of one invoice.
 	 */
 	public String formatInvoice(Invoice invoice) {
-		//TODO provide the values to be formatted
-		return String.format("%d,%s,%s,%.2f,%s%s", 
-				0, "NYI", "NYI", 0.0, "NYI", "NYI");
+		//provide the values to be formatted
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//		System.out.println(invoice.getNumber());
+//		System.out.println(invoice.getPaidDate());
+//		System.out.println((invoice.getPaidDate().isPresent()) ? "Paid " + invoice.getPaidDate().get().format(dateFormatter) : "Not Paid");
+		return String.format("%d,%s,%s,%.2f,%s,%s", // added , between last 2 %s%s
+				invoice.getNumber(),
+				invoice.getCustomer().getFirstName(),
+				invoice.getCustomer().getLastName(),
+				invoice.getAmount(),
+				invoice.getInvoiceDate().format(dateFormatter),
+				((invoice.getPaidDate().isPresent()) ? invoice.getPaidDate().get().format(dateFormatter) : "")
+		);
 	}
 
 	@Override
@@ -128,11 +138,11 @@ public class CSVParser implements Parser {
 
 	@Override
 	public Stream<String> produceCustomers(Stream<Customer> customers) {
-		return null;
+		return customers.map(c -> formatCustomer(c));
 	}
 
 	@Override
 	public Stream<String> produceInvoices(Stream<Invoice> invoices) {
-		return null;
+		return invoices.map(i -> formatInvoice(i));
 	}
 }
