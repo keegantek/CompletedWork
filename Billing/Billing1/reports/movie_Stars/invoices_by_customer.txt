@@ -1,0 +1,59 @@
+All invoices, grouped by customer and ordered by invoice number
+==============================================================================
+
+       Customer                     Issued      Amount        Paid
+----  ------------------------  ----------  ----------  ----------
+
+Nat Pendleton
+ 294  Nat Pendleton             2021-10-10      200.00  2021-10-20
+
+Myrna Loy
+ 661  Myrna Loy                 2021-10-12      269.00  2021-11-03
+ 958  Myrna Loy                 2021-11-15       40.00  2023-01-20
+
+Henry Wadsworth
+ 225  Henry Wadsworth           2021-10-12      200.00  2021-11-30
+ 957  Henry Wadsworth           2021-11-12       34.00            
+
+Maureen O'Sullivan
+ 142  Maureen O'Sullivan        2021-11-12      132.00            
+ 223  Maureen O'Sullivan        2021-10-15      240.00  2021-11-01
+
+Edward Brophy
+ 523  Edward Brophy             2021-10-01      266.00  2021-10-20
+ 914  Edward Brophy             2021-08-23      100.00  2021-09-07
+
+Natalie Moorhead
+ 251  Natalie Moorhead          2021-09-02       61.00  2021-11-30
+ 558  Natalie Moorhead          2021-07-25       69.00  2021-09-01
+
+Minna Gombell
+ 179  Minna Gombell             2021-11-26      300.00  2021-11-30
+
+Edward Ellis
+ 150  Edward Ellis              2021-11-10      350.00  2021-11-10
+
+Bert Roach
+ 683  Bert Roach                2021-09-24      240.00  2021-10-03
+ 853  Bert Roach                2021-11-26      288.00            
+
+Skippy Asta
+ 550  Skippy Asta               2021-09-12       34.00            
+ 746  Skippy Asta               2021-07-12       34.00            
+ 813  Skippy Asta               2021-11-12       34.00            
+
+Lionel Barrymore
+ 959  Lionel Barrymore          2023-01-20        9.99            
+
+William Powell
+ 764  William Powell            2021-11-30      150.00            
+
+Cesar Romero
+ 671  Cesar Romero              2021-11-15      221.00            
+ 795  Cesar Romero              2021-09-15      160.00            
+
+Porter Hall
+ 133  Porter Hall               2021-08-26      200.00  2021-10-01
+ 419  Porter Hall               2021-07-10      200.00  2021-10-01
+ 960  Porter Hall               2023-01-20      133.00            
+

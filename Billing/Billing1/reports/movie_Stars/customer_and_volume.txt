@@ -1,0 +1,20 @@
+All invoices, grouped by customer and ordered by invoice number
+==============================================================================
+
+Customer                        Volume
+------------------------  ------------
+
+Nat Pendleton                   200.00
+Myrna Loy                       309.00
+Henry Wadsworth                 234.00
+Maureen O'Sullivan              372.00
+Edward Brophy                   366.00
+Natalie Moorhead                130.00
+Minna Gombell                   300.00
+Edward Ellis                    350.00
+Bert Roach                      528.00
+Skippy Asta                     102.00
+Lionel Barrymore                  9.99
+William Powell                  150.00
+Cesar Romero                    381.00
+Porter Hall                     533.00
