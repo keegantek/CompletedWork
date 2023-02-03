@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -41,8 +42,8 @@ public class BillingTest {
 	public Billing billing;
 
 	// define a mock Consumer<Customer> and Consumer<Invoice>
-	Consumer<Customer> mockCustomerConsumer = mock(Customer.class);
-	Consumer<Invoice> mockInvoiceConsumer = mock(Consumer.class);
+	Consumer<Customer> mockCustomerConsumer = mock(Consumer.class);;
+	Consumer<Invoice> mockInvoiceConsumer = mock(Consumer.class);;
 
 	/**
 	 * Assure that the necessary folders are in place, and make a copy
