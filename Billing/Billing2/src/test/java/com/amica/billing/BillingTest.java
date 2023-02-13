@@ -2,10 +2,12 @@ package com.amica.billing;
 
 import static com.amica.billing.TestUtility.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.hasProperty;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.hamcrest.MockitoHamcrest.argThat;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -42,8 +44,8 @@ public class BillingTest {
 	public Billing billing;
 
 	// define a mock Consumer<Customer> and Consumer<Invoice>
-	Consumer<Customer> mockCustomerConsumer = mock(Consumer.class);;
-	Consumer<Invoice> mockInvoiceConsumer = mock(Consumer.class);;
+	Consumer<Customer> mockCustomerConsumer;
+	Consumer<Invoice> mockInvoiceConsumer;
 
 	/**
 	 * Assure that the necessary folders are in place, and make a copy
@@ -63,6 +65,9 @@ public class BillingTest {
 		billing = new Billing(TEMP_FOLDER + "/" + CUSTOMERS_FILENAME, TEMP_FOLDER + "/" + INVOICES_FILENAME);
 
 		// register them as listeners
+		mockCustomerConsumer = mock(Consumer.class);
+		mockInvoiceConsumer = mock(Consumer.class);
+
 		billing.addCustomerListener(mockCustomerConsumer); // code that sets up mock listeners
 		billing.addInvoiceListener(mockInvoiceConsumer); // code that sets up mock listeners
 	}
@@ -99,7 +104,7 @@ public class BillingTest {
 			log.log(Level.SEVERE, "Couldn't load from given filenames.", ex);
 		}
 
-		verify(mockCustomerConsumer).onCustomerChanged(any());
+		verify(mockCustomerConsumer).accept(any(Customer.class));
 	}
 
 	@Test
@@ -110,6 +115,7 @@ public class BillingTest {
 		} catch (Exception ex) {
 			log.log(Level.SEVERE, "Couldn't load from given filenames.", ex);
 		}
+		verify(mockInvoiceConsumer).accept(any(Invoice.class));
 	}
 
 	@Test
@@ -121,6 +127,9 @@ public class BillingTest {
 		} catch (Exception ex) {
 			log.log(Level.SEVERE, "Couldn't load from given filenames.", ex);
 		}
+
+		verify(mockInvoiceConsumer).accept(argThat(hasProperty("paidDate",
+				hasProperty("present", equalTo(true)))));
 	}
 	
 }
