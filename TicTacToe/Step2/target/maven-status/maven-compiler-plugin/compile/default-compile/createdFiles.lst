@@ -1,0 +1,8 @@
+com\amica\games\Board$Square.class
+com\amica\games\Player.class
+com\amica\games\RandomPlayer.class
+com\amica\games\Game.class
+com\amica\games\Application.class
+com\amica\games\Board.class
+com\amica\games\GameListener.class
+com\amica\games\BruteForcePlayer.class
